@@ -42,7 +42,7 @@ if st.button("Generate Insights"):
                 
                 st.success("Analysis Complete!")
                 st.write("RAW DATA:", result)
-                st.json(result) # Display the JSON result nicely
+                st.exception(e) # Display the JSON result nicely
                 
             except Exception as e:
                 st.error(f"An error occurred: {e}")
