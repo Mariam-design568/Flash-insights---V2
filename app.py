@@ -75,17 +75,14 @@ class LLMError(ValueError):
     pass
 
 
-def call_llm_json(system_prompt: str, user_prompt: str) -> dict[str, object]:
+def call_llm_json(system_prompt: str, user_prompt: str) -> dict:
     api_key = os.environ.get("LLM_API_KEY", "").strip()
     if not api_key:
         raise LLMError("clé API LLM_API_KEY non configurée")
-    endpoint = os.environ.get(
-        "LLM_API_BASE_URL",
-        "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions",
-    ).strip()
+        
+    endpoint = os.environ.get("LLM_API_BASE_URL", "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions").strip()
     model = os.environ.get("LLM_MODEL", "gemini-3.8-flash").strip()
-    if not endpoint or not model:
-        raise LLMError("LLM_API_BASE_URL et LLM_MODEL doivent être renseignés")
+    
     payload = json.dumps({
         "model": model,
         "temperature": 0,
@@ -95,6 +92,7 @@ def call_llm_json(system_prompt: str, user_prompt: str) -> dict[str, object]:
             {"role": "user", "content": user_prompt},
         ],
     }).encode("utf-8")
+    
     request = urllib.request.Request(
         endpoint,
         data=payload,
@@ -104,14 +102,13 @@ def call_llm_json(system_prompt: str, user_prompt: str) -> dict[str, object]:
         },
         method="POST",
     )
-        try:
+    
+    try:
         with urllib.request.urlopen(request) as response:
             response_data = json.loads(response.read().decode("utf-8"))
-            
-            # Get the text from the AI
             raw_text = response_data["choices"][0]["message"]["content"]
             
-            # Clean up markdown formatting (```json) that breaks the code
+            # Clean markdown backticks
             clean_text = raw_text.strip()
             if clean_text.startswith("```json"):
                 clean_text = clean_text[7:]
@@ -122,13 +119,21 @@ def call_llm_json(system_prompt: str, user_prompt: str) -> dict[str, object]:
                 
             clean_text = clean_text.strip()
             
-            # Return the parsed dictionary
-            return json.loads(clean_text)
-            
+            # Try to parse
+            try:
+                result = json.loads(clean_text)
+                # If the AI returned a string instead of a dict, force it into a dict
+                if not isinstance(result, dict):
+                    return {"result": result}
+                return result
+            except Exception as e:
+                print(f"JSON PARSE ERROR: {e}")
+                print(f"RAW AI OUTPUT: {raw_text}")
+                return {"error": "AI did not return valid JSON", "raw_text": raw_text}
+                
     except Exception as e:
-        # If it fails, return a dictionary with the error so the app doesn't crash
-        return {"error": str(e), "raw_text": raw_text if 'raw_text' in locals() else "Unknown"}
-
+        print(f"NETWORK ERROR: {e}")
+        return {"error": str(e)}
 
 def extract_data_with_llm(
     text_content: str, sectors: list[sqlite3.Row] | list[dict[str, object]]
