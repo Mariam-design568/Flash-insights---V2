@@ -8,7 +8,6 @@ else:
     st.error("API Key not found! Please add LLM_API_KEY to Streamlit Secrets.")
 
 # 2. Import your backend functions directly from app.py
-# Make sure app.py is in the same folder!
 try:
     from app import extract_data_with_llm, analyze_sentiment_with_llm
 except ImportError as e:
@@ -20,9 +19,15 @@ st.set_page_config(page_title="Flash Insights AI", page_icon="⚡")
 st.title("⚡ Flash Insights AI")
 st.write("Welcome, judges! Select a task and enter your text below.")
 
-# Let the user choose what they want to do
 task = st.selectbox("Choose a task:", ["Analyze Sentiment", "Extract Data"])
 user_text = st.text_area("Enter your text here:", height=150)
+
+# NEW: Add an input for sectors if "Extract Data" is selected
+sectors_list = []
+if task == "Extract Data":
+    sectors_input = st.text_input("Enter sectors (comma-separated):", "Technology, Finance, Healthcare")
+    # Convert "Technology, Finance" into a Python list: ["Technology", "Finance"]
+    sectors_list = [s.strip() for s in sectors_input.split(",") if s.strip()]
 
 if st.button("Generate Insights"):
     if user_text.strip():
@@ -32,7 +37,8 @@ if st.button("Generate Insights"):
                 if task == "Analyze Sentiment":
                     result = analyze_sentiment_with_llm(user_text)
                 else:
-                    result = extract_data_with_llm(user_text)
+                    # Pass the user_text AND the sectors_list
+                    result = extract_data_with_llm(user_text, sectors_list)
                 
                 st.success("Analysis Complete!")
                 st.json(result) # Display the JSON result nicely

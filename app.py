@@ -2143,16 +2143,19 @@ class FlashInsightsHandler(BaseHTTPRequestHandler):
 
 
 def main() -> None:
+    #initialize_database()
+    #server = ThreadingHTTPServer(("127.0.0.1", 8000), FlashInsightsHandler)
+    #print("Flash Insights est disponible sur http://127.0.0.1:8000")
+    #print(f"Base SQLite : {DATABASE_PATH}")
+    #try:
+        #server.serve_forever()
+    #except KeyboardInterrupt:
+        #print("\nArrêt de Flash Insights.")
+    #finally:
+        #server.server_close()
+
     initialize_database()
-    server = ThreadingHTTPServer(("127.0.0.1", 8000), FlashInsightsHandler)
-    print("Flash Insights est disponible sur http://127.0.0.1:8000")
-    print(f"Base SQLite : {DATABASE_PATH}")
-    try:
-        server.serve_forever()
-    except KeyboardInterrupt:
-        print("\nArrêt de Flash Insights.")
-    finally:
-        server.server_close()
+    print("Flash Insights app.py is ready and database is initialized.")
 
 
 if __name__ == "__main__":
