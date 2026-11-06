@@ -45,6 +45,6 @@ if st.button("Generate Insights"):
                 st.exception(e) # Display the JSON result nicely
                 
             except Exception as e:
-                st.error(f"An error occurred: {e}")
+                st.exception(e)
     else:
         st.warning("Please enter some text first!")
