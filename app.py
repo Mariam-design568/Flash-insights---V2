@@ -159,17 +159,18 @@ def extract_data_with_llm(
             ensure_ascii=False,
         ),
     )
-    
+
     if isinstance(result, str):
         try:
             result = json.loads(result)
         except:
             raise LLMError(f"L'IA a renvoyé du texte au lieu de JSON : {result}")
     try:
-        label = result["label"]
-        value = float(result["value"])
-        unit = result["unit"]
-        sector_id = int(result["sector_id"])
+        
+        label = result.get("label")
+        value = result.get("value")
+        unit = result.get("unit")
+        sector_id = result.get("sector_id")
     except (KeyError, TypeError, ValueError, OverflowError) as exc:
         raise LLMError("l'extraction n'a pas retourné les champs attendus") from exc
     valid_sector_ids = {sector["id"] for sector in available_sectors}
