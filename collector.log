@@ -1,0 +1,29 @@
+{"timestamp": "2026-10-29T09:52:55+00:00", "connector": "worker", "items_seen": 0, "items_inserted": 0, "duplicates_skipped": 0, "errors": 0, "status": "ok"}
+{"timestamp": "2026-10-29T09:52:55+00:00", "connector": "rss", "items_seen": 1, "items_inserted": 1, "duplicates_skipped": 0, "errors": 0, "status": "ok", "error_details": []}
+{"timestamp": "2026-10-29T09:56:58+00:00", "connector": "worker", "items_seen": 0, "items_inserted": 0, "duplicates_skipped": 0, "errors": 0, "status": "ok"}
+{"timestamp": "2026-10-29T09:56:59+00:00", "connector": "rss", "items_seen": 1, "items_inserted": 1, "duplicates_skipped": 0, "errors": 0, "status": "ok", "error_details": []}
+{"timestamp": "2026-10-29T09:57:35+00:00", "connector": "worker", "items_seen": 0, "items_inserted": 0, "duplicates_skipped": 0, "errors": 0, "status": "ok"}
+{"timestamp": "2026-10-29T09:57:35+00:00", "connector": "rss", "items_seen": 1, "items_inserted": 1, "duplicates_skipped": 0, "errors": 0, "status": "ok", "error_details": []}
+{"timestamp": "2026-10-29T10:06:41+00:00", "connector": "worker", "items_seen": 0, "items_inserted": 0, "duplicates_skipped": 0, "errors": 0, "status": "ok"}
+{"timestamp": "2026-10-29T10:06:41+00:00", "connector": "rss", "items_seen": 1, "items_inserted": 1, "duplicates_skipped": 0, "errors": 0, "status": "ok", "error_details": []}
+{"timestamp": "2026-10-29T11:03:22+00:00", "connector": "worker", "items_seen": 0, "items_inserted": 0, "duplicates_skipped": 0, "errors": 0, "status": "ok"}
+{"timestamp": "2026-10-29T11:03:25+00:00", "connector": "rss", "items_seen": 1, "items_inserted": 1, "duplicates_skipped": 0, "errors": 0, "status": "ok", "error_details": []}
+{"timestamp": "2026-10-29T11:04:47+00:00", "connector": "worker", "items_seen": 0, "items_inserted": 0, "duplicates_skipped": 0, "errors": 0, "status": "ok"}
+{"timestamp": "2026-10-29T11:04:48+00:00", "connector": "rss", "items_seen": 1, "items_inserted": 1, "duplicates_skipped": 0, "errors": 0, "status": "ok", "error_details": []}
+{"timestamp": "2026-10-29T11:06:31+00:00", "connector": "worker", "items_seen": 0, "items_inserted": 0, "duplicates_skipped": 0, "errors": 0, "status": "ok"}
+{"timestamp": "2026-10-29T11:06:32+00:00", "connector": "rss", "items_seen": 1, "items_inserted": 1, "duplicates_skipped": 0, "errors": 0, "status": "ok", "error_details": []}
+{"timestamp": "2026-10-29T11:53:10+00:00", "connector": "worker", "items_seen": 0, "items_inserted": 0, "duplicates_skipped": 0, "errors": 0, "status": "ok"}
+{"timestamp": "2026-10-29T11:53:11+00:00", "connector": "rss", "items_seen": 1, "items_inserted": 1, "duplicates_skipped": 0, "errors": 0, "status": "ok", "error_details": []}
+{"timestamp": "2026-10-29T11:54:07+00:00", "connector": "worker", "items_seen": 0, "items_inserted": 0, "duplicates_skipped": 0, "errors": 0, "status": "ok"}
+{"timestamp": "2026-10-29T11:54:07+00:00", "connector": "rss", "items_seen": 1, "items_inserted": 1, "duplicates_skipped": 0, "errors": 0, "status": "ok", "error_details": []}
+{"timestamp": "2026-10-29T11:54:52+00:00", "connector": "worker", "items_seen": 0, "items_inserted": 0, "duplicates_skipped": 0, "errors": 0, "status": "ok"}
+{"timestamp": "2026-10-29T11:54:53+00:00", "connector": "rss", "items_seen": 1, "items_inserted": 1, "duplicates_skipped": 0, "errors": 0, "status": "ok", "error_details": []}
+{"timestamp": "2026-11-06T13:34:55+00:00", "connector": "worker", "items_seen": 0, "items_inserted": 0, "duplicates_skipped": 0, "errors": 0, "status": "ok"}
+{"timestamp": "2026-11-06T13:34:55+00:00", "connector": "worker", "items_seen": 0, "items_inserted": 0, "duplicates_skipped": 0, "errors": 0, "status": "ok"}
+{"timestamp": "2026-11-06T13:34:56+00:00", "connector": "rss", "items_seen": 1, "items_inserted": 1, "duplicates_skipped": 0, "errors": 0, "status": "ok", "error_details": []}
+{"timestamp": "2026-11-06T13:38:14+00:00", "connector": "worker", "items_seen": 0, "items_inserted": 0, "duplicates_skipped": 0, "errors": 0, "status": "ok"}
+{"timestamp": "2026-11-06T13:38:15+00:00", "connector": "rss", "items_seen": 1, "items_inserted": 1, "duplicates_skipped": 0, "errors": 0, "status": "ok", "error_details": []}
+{"timestamp": "2026-11-06T13:38:15+00:00", "connector": "rss", "items_seen": 1, "items_inserted": 0, "duplicates_skipped": 1, "errors": 0, "status": "ok", "error_details": []}
+{"timestamp": "2026-11-06T13:38:58+00:00", "connector": "worker", "items_seen": 0, "items_inserted": 0, "duplicates_skipped": 0, "errors": 0, "status": "ok"}
+{"timestamp": "2026-11-06T13:38:58+00:00", "connector": "rss", "items_seen": 1, "items_inserted": 1, "duplicates_skipped": 0, "errors": 0, "status": "ok", "error_details": []}
+{"timestamp": "2026-11-06T13:38:58+00:00", "connector": "rss", "items_seen": 1, "items_inserted": 0, "duplicates_skipped": 1, "errors": 0, "status": "ok", "error_details": []}
