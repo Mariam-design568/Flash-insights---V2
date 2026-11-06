@@ -41,6 +41,7 @@ if st.button("Generate Insights"):
                     result = extract_data_with_llm(user_text, sectors_list)
                 
                 st.success("Analysis Complete!")
+                st.write("RAW DATA:", result)
                 st.json(result) # Display the JSON result nicely
                 
             except Exception as e:
