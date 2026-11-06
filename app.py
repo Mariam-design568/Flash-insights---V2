@@ -159,11 +159,12 @@ def extract_data_with_llm(
             ensure_ascii=False,
         ),
     )
+    
     if isinstance(result, str):
-    try:
-        result = json.loads(result)
-    except:
-        raise LLMError(f"L'IA a renvoyé du texte au lieu de JSON : {result}")
+        try:
+            result = json.loads(result)
+        except:
+            raise LLMError(f"L'IA a renvoyé du texte au lieu de JSON : {result}")
     try:
         label = result["label"]
         value = float(result["value"])
