@@ -104,17 +104,30 @@ def call_llm_json(system_prompt: str, user_prompt: str) -> dict[str, object]:
         },
         method="POST",
     )
-    try:
-        with urllib.request.urlopen(request, timeout=30) as response:
-            response_body = json.loads(response.read().decode("utf-8"))
-        content = response_body["choices"][0]["message"]["content"]
-        result = json.loads(content)
-    except (urllib.error.URLError, http.client.HTTPException, TimeoutError, OSError,
-            UnicodeDecodeError, json.JSONDecodeError, KeyError, IndexError, TypeError) as exc:
-        raise LLMError(f"appel LLM impossible ou réponse invalide ({exc})") from exc
-    if not isinstance(result, dict):
-        raise LLMError("la réponse LLM doit être un objet JSON")
-    return result
+        try:
+        with urllib.request.urlopen(request) as response:
+            response_data = json.loads(response.read().decode("utf-8"))
+            
+            # Get the text from the AI
+            raw_text = response_data["choices"][0]["message"]["content"]
+            
+            # Clean up markdown formatting (```json) that breaks the code
+            clean_text = raw_text.strip()
+            if clean_text.startswith("```json"):
+                clean_text = clean_text[7:]
+            elif clean_text.startswith("```"):
+                clean_text = clean_text[3:]
+            if clean_text.endswith("```"):
+                clean_text = clean_text[:-3]
+                
+            clean_text = clean_text.strip()
+            
+            # Return the parsed dictionary
+            return json.loads(clean_text)
+            
+    except Exception as e:
+        # If it fails, return a dictionary with the error so the app doesn't crash
+        return {"error": str(e), "raw_text": raw_text if 'raw_text' in locals() else "Unknown"}
 
 
 def extract_data_with_llm(
